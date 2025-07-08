@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mediatheek | Feedback Management</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      display: flex;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .sidebar {
+      width: 70px;
+      background-color: #6d28d9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 0;
+      gap: 20px;
+      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+    }
+
+    .sidebar-icon {
+      width: 36px;
+      height: 36px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar-icon:hover {
+      transform: scale(1.1);
+    }
+
+    .main {
+      flex: 1;
+      padding: 40px 50px;
+      background-color: #ffffff;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .header-left h1 {
+      font-size: 24px;
+      color: #4b0082;
+      margin-bottom: 10px;
+    }
+
+    .header-left p {
+      font-size: 14px;
+      color: #555;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .header-right {
+      text-align: right;
+    }
+
+    .header-right button {
+      padding: 6px 14px;
+      background-color: #e0e0e0;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+    }
+
+    .meta-data {
+      font-size: 13px;
+      color: #555;
+    }
+
+    .meta-data p {
+      margin: 2px 0;
+    }
+
+    .top-content {
+      display: flex;
+      margin-top: 30px;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+
+    .top-left img {
+      width: 160px;
+      height: 160px;
+      background-color: #ddd;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .table-container {
+      flex: 1;
+      min-width: 280px;
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table th, table td {
+      border: 1px solid #ddd;
+      padding: 10px 12px;
+      font-size: 14px;
+    }
+
+    table th {
+      background-color: #f3f3f3;
+      color: #333;
+    }
+
+    .section-title {
+      margin-top: 50px;
+      margin-bottom: 15px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #4b0082;
+    }
+
+    .previews {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .preview-item {
+      width: 160px;
+      background-color: #f9f9f9;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .preview-item img {
+      width: 100%;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 8px;
+      background-color: #ccc;
+      margin-bottom: 10px;
+    }
+
+    .preview-item a {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      color: #6d28d9;
+      text-decoration: none;
+    }
+
+    .form-section {
+      background-color: #f3f3f3;
+      margin-top: 50px;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .form-section h2 {
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .form-section p {
+      font-size: 14px;
+      margin-bottom: 20px;
+      color: #666;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 15px;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      height: 90px;
+    }
+
+    .submit-button {
+      padding: 12px 20px;
+      background-color: #6d28d9;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-button:hover {
+      background-color: #5a21b7;
+    }
+
+    @media (max-width: 768px) {
+      .main {
+        padding: 30px 20px;
+      }
+
+      .top-content {
+        flex-direction: column;
+      }
+
+      .table-container {
+        margin-left: 0;
+      }
+
+      .sidebar {
+        width: 50px;
+        padding: 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="sidebar-icon"></div>
+    <div class="sidebar-icon"></div>
+    <div class="sidebar-icon"></div>
+    <div class="sidebar-icon"></div>
+    <div class="sidebar-icon"></div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-left">
+        <h1>Mediatheek | <strong>Feedback Management</strong></h1>
+        <p>
+          Sometimes this is the irony of promoting your businesses products and services,
+          because for a fact that you want to make your business recognizable and earn more
+          sales. Of course you need to come up with attractive prints that will make you stand out.
+        </p>
+      </div>
+      <div class="header-right">
+        <button>TERUG</button>
+        <div class="meta-data">
+          <p><strong>Categorie:</strong> Hond/kat</p>
+          <p><strong>Vakgebied:</strong> Dierenarts</p>
+          <p><strong>Type:</strong> PDF, PPT, IMG</p>
+          <p><strong>Taal:</strong> Nederlands</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Content -->
+    <div class="top-content">
+      <div class="top-left">
+        <img src="#" alt="Placeholder">
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Tag</th>
+              <th>Language</th>
+              <th>Size</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Online PowerPoint</td>
+              <td>PowerPoint</td>
+              <td>English</td>
+              <td>27 MB</td>
+              <td><a href="#">Download</a></td>
+            </tr>
+            <tr>
+              <td>Bijsluiter</td>
+              <td>PowerPoint</td>
+              <td>English</td>
+              <td>14 MB</td>
+              <td><a href="#">Download</a></td>
+            </tr>
+            <tr>
+              <td>Vertrende poster</td>
+              <td>Image</td>
+              <td>NL</td>
+              <td>3 MB</td>
+              <td><a href="#">Download</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Preview Section -->
+    <div class="section-title">Previews</div>
+    <div class="previews">
+      <div class="preview-item">
+        <img src="#" alt="Preview">
+        <div>Online PowerPoint</div>
+        <a href="#">Download</a>
+      </div>
+      <div class="preview-item">
+        <img src="#" alt="Preview">
+        <div>Bijsluiter</div>
+        <a href="#">Download</a>
+      </div>
+      <div class="preview-item">
+        <img src="#" alt="Preview">
+        <div>Vertrende poster</div>
+        <a href="#">Download</a>
+      </div>
+    </div>
+
+    <!-- Form Section -->
+    <div class="form-section">
+      <h2>Stel uw vraag</h2>
+      <p>Heeft u vragen over dit materiaal? Laat een bericht achter via het formulier hieronder.</p>
+      <form>
+        <div class="form-group">
+          <input type="email" placeholder="E-mailadres" required />
+        </div>
+        <div class="form-group">
+          <input type="text" placeholder="Onderwerp" required />
+        </div>
+        <div class="form-group">
+          <textarea placeholder="Bericht..." required></textarea>
+        </div>
+        <button class="submit-button" type="submit">VERSTUUR</button>
+      </form>
+    </div>
+
+  </div>
+
+</body>
+</html>

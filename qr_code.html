@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR Code Produk</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: #f9fafb;
+      color: #333;
+      padding: 30px 50px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .nav-left {
+      font-weight: bold;
+      font-size: 18px;
+      color: #4b0082;
+    }
+
+    .nav-center a {
+      margin: 0 12px;
+      text-decoration: none;
+      color: #555;
+      font-size: 14px;
+      position: relative;
+    }
+
+    .nav-center a:hover {
+      color: #4b0082;
+    }
+
+    .nav-right input {
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .breadcrumb {
+      font-size: 13px;
+      color: #888;
+      margin: 20px 0;
+    }
+
+    .product-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 20px;
+    }
+
+    .product-image {
+      width: 400px;
+      height: 400px;
+      background-color: #ddd;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      flex-shrink: 0;
+    }
+
+    .product-details {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .product-details h1 {
+      font-size: 28px;
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .price {
+      font-size: 22px;
+      color: #4b0082;
+      margin-bottom: 10px;
+    }
+
+    .rating {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .size-selector,
+    .color-selector {
+      margin-bottom: 20px;
+    }
+
+    .size-selector button,
+    .color-selector button {
+      margin-right: 8px;
+      margin-top: 6px;
+      padding: 8px 14px;
+      border: 1px solid #bbb;
+      background-color: #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: background-color 0.2s;
+    }
+
+    .size-selector button:hover,
+    .color-selector button:hover {
+      background-color: #f3f3f3;
+    }
+
+    .btns {
+      margin: 30px 0;
+    }
+
+    .btns button {
+      padding: 10px 20px;
+      margin-right: 10px;
+      border: none;
+      background-color: #4b0082;
+      color: white;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btns button:hover {
+      background-color: #370066;
+    }
+
+    .description {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .sidebar-vertical {
+      position: fixed;
+      right: 0;
+      top: 120px;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-size: 12px;
+      color: #aaa;
+      background-color: #f1f1f1;
+      padding: 10px;
+      border-radius: 10px 0 0 10px;
+      box-shadow: -2px 2px 6px rgba(0,0,0,0.05);
+    }
+
+    .review-section {
+      margin-top: 60px;
+    }
+
+    .review-section h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .review-gallery {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .review-gallery div {
+      width: 100px;
+      height: 100px;
+      background-color: #bbb;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .rating-summary {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #666;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+
+      .product-section {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .product-image {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+      }
+
+      .sidebar-vertical {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-left">CREEZ MY</div>
+    <div class="nav-center">
+      <a href="#">MEREK</a>
+      <a href="#">NEW</a>
+      <a href="#">% SALE</a>
+    </div>
+    <div class="nav-right">
+      <input type="text" placeholder="Cari produk...">
+    </div>
+  </header>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    Beranda / Aksesoris / Nike Air Max Die
+  </div>
+
+  <!-- Product Section -->
+  <div class="product-section">
+    <!-- QR Code / Gambar -->
+    <div class="product-image">
+      <!-- Gambar produk / QR dapat disisipkan sebagai <img> -->
+    </div>
+
+    <!-- Detail Produk -->
+    <div class="product-details">
+      <h1>NIKE AIR MAX DIE</h1>
+      <div class="price">Rp 14.799</div>
+      <div class="rating">⭐⭐⭐☆ (21 ulasan)</div>
+
+      <!-- Ukuran -->
+      <div class="size-selector">
+        <strong>Ukuran:</strong><br>
+        <button>36</button>
+        <button>37</button>
+        <button>38</button>
+        <button>39</button>
+        <button>40</button>
+      </div>
+
+      <!-- Warna -->
+      <div class="color-selector">
+        <strong>Warna:</strong><br>
+        <button>Merah</button>
+        <button>Hitam</button>
+        <button>Putih</button>
+      </div>
+
+      <!-- Tombol -->
+      <div class="btns">
+        <button>BUKA QR</button>
+        <button>TAMBAHKAN KE FAVORIT</button>
+      </div>
+
+      <!-- Deskripsi -->
+      <div class="description">
+        Produk ini merupakan hasil desain terbaik dari Nike yang menghadirkan kenyamanan dan gaya dalam satu paket. QR Code di halaman ini akan membawa Anda langsung ke spesifikasi atau proses peminjaman barang yang tersedia.
+      </div>
+    </div>
+  </div>
+
+  <!-- Sidebar Vertikal -->
+  <div class="sidebar-vertical">
+    PRODUK TERKAIT • LIHAT DETAIL • INFORMASI QR • UKURAN • PENGIRIMAN
+  </div>
+
+  <!-- Review Section -->
+  <div class="review-section">
+    <h3>ULASAN PRODUK</h3>
+    <div class="review-gallery">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="rating-summary">
+      Rata-rata penilaian: ⭐⭐⭐⭐☆
+    </div>
+  </div>
+
+</body>
+</html>
