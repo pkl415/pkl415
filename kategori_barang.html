@@ -3,119 +3,185 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kategori Barang - Produk Rekomendasi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Kategori Barang</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-    :root {
-      --primary: #6d28d9;
-      --accent: #f472b6;
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
     }
-    .product-card:hover {
-      transform: translateY(-6px);
+
+    .product-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .pinjam-btn {
+      background-color: white;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .pinjam-btn:hover {
+      background-color: #4caf50;
+      color: white;
+      border-color: #4caf50;
+    }
+
+    .detail-btn {
+      background-color: transparent;
+      color: #333;
+      border: 1px solid #ccc;
+      padding: 8px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .detail-btn:hover,
+    .detail-btn:focus {
+      background-color: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+
+    .lihat-semua-btn {
+      background-color: transparent;
+      color: #6b7280;
+      border: 2px solid #d1d5db;
+      font-weight: 600;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .lihat-semua-btn:hover,
+    .lihat-semua-btn:focus {
+      background-color: #ef4444;
+      color: white;
+      border-color: #ef4444;
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #3b82f6;
+      color: white;
+      padding: 5px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
     }
   </style>
 </head>
-<body class="bg-gradient-to-br from-purple-50 to-white text-gray-800 px-4 py-10 sm:px-8 md:px-16 lg:px-24">
+<body>
 
-  <section>
-    <h2 class="text-4xl font-bold text-center text-purple-800 mb-12 tracking-tight">
-      Produk <span class="text-pink-500">Rekomendasi Kami</span>
-    </h2>
+  <!-- Header -->
+  <header class="bg-white border-b border-gray-200 py-4 px-6 flex justify-between items-center shadow-sm">
+    <h1 class="text-2xl font-bold text-gray-800">Kategori Barang</h1>
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <select class="border border-gray-300 rounded-md px-3 py-2 text-sm">
+          <option>Kategori</option>
+          <option>Elektronik</option>
+          <option>Peralatan</option>
+          <option>Dokumen</option>
+        </select>
+      </div>
+      <div class="relative">
+        <input type="text" placeholder="Cari barang..." class="border border-gray-300 rounded-md px-3 py-2 text-sm w-56" />
+        <span class="absolute right-3 top-2.5 text-gray-500">🔍</span>
+      </div>
+    </div>
+  </header>
 
-    <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+  <!-- Konten Produk -->
+  <main class="px-6 py-10 max-w-7xl mx-auto">
+    <h2 class="text-xl font-semibold text-gray-700 mb-6">Barang Tersedia</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
 
-      <!-- Kartu Produk -->
-      <!-- Ulangi blok ini untuk produk lain -->
-      <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
-        <div class="relative group aspect-[4/3] bg-gray-200 flex items-center justify-center">
-          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4dd0a6d9-162f-4d39-a3e4-98793b0d1755.png"
-               alt="Banana Chips"
-               class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
+      <!-- Produk 1 -->
+      <div class="product-card">
+        <div class="relative bg-gray-100 aspect-w-4 aspect-h-3 flex justify-center items-center">
+          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80"
+               alt="Laptop Dell"
+               class="object-cover w-full h-full"
                onerror="this.style.display='none'" />
-          <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Keripik</span>
+          <span class="badge">Elektronik</span>
         </div>
-        <div class="p-5 flex flex-col flex-grow">
-          <h3 class="text-lg font-bold text-gray-800 mb-1">Banana Chips Rasa <span class="italic text-pink-600">Brown Coklat</span></h3>
-          <p class="text-sm text-gray-600 mb-4 flex-grow">Keripik Pisang dengan taburan coklat manis yang pas jadi teman santai.</p>
-          <div class="flex gap-3 mt-auto">
-            <button class="w-1/2 bg-pink-500 hover:bg-pink-600 text-white text-sm font-semibold py-2 rounded-md flex items-center justify-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-3 6m14-6v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m14-6H6" />
-              </svg>
-              Pinjam
-            </button>
-            <button class="w-1/2 border-2 border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white text-sm font-semibold py-2 rounded-md transition">
-              Lihat Detail
-            </button>
+        <div class="p-4 flex flex-col gap-2 flex-grow">
+          <h3 class="font-semibold text-gray-800 text-base">Laptop Dell Inspiron 14</h3>
+          <p class="text-sm text-gray-600 flex-grow">Laptop ringan untuk produktivitas kerja dan presentasi mobile.</p>
+          <div class="flex gap-2 mt-auto">
+            <button class="w-1/2 pinjam-btn">Pinjam</button>
+            <button class="w-1/2 detail-btn">Lihat Detail</button>
           </div>
         </div>
       </div>
 
       <!-- Produk 2 -->
-      <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
-        <div class="relative group aspect-[4/3] bg-gray-200 flex items-center justify-center">
-          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/7a782f61-d24c-4138-9a4a-91214e1c1a19.png"
-               alt="Banana Chips"
-               class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
+      <div class="product-card">
+        <div class="relative bg-gray-100 aspect-w-4 aspect-h-3 flex justify-center items-center">
+          <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80"
+               alt="Proyektor"
+               class="object-cover w-full h-full"
                onerror="this.style.display='none'" />
-          <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Keripik</span>
+          <span class="badge">Peralatan</span>
         </div>
-        <div class="p-5 flex flex-col flex-grow">
-          <h3 class="text-lg font-bold text-gray-800 mb-1">Banana Chips Rasa <span class="italic text-pink-600">Brown Coklat</span></h3>
-          <p class="text-sm text-gray-600 mb-4 flex-grow">Keripik Pisang dengan taburan coklat manis yang pas jadi teman santai.</p>
-          <div class="flex gap-3 mt-auto">
-            <button class="w-1/2 bg-pink-500 hover:bg-pink-600 text-white text-sm font-semibold py-2 rounded-md flex items-center justify-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-3 6m14-6v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m14-6H6" />
-              </svg>
-              Pinjam
-            </button>
-            <button class="w-1/2 border-2 border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white text-sm font-semibold py-2 rounded-md transition">
-              Lihat Detail
-            </button>
+        <div class="p-4 flex flex-col gap-2 flex-grow">
+          <h3 class="font-semibold text-gray-800 text-base">Proyektor Epson XGA</h3>
+          <p class="text-sm text-gray-600 flex-grow">Cocok untuk rapat atau presentasi di kelas dan kantor.</p>
+          <div class="flex gap-2 mt-auto">
+            <button class="w-1/2 pinjam-btn">Pinjam</button>
+            <button class="w-1/2 detail-btn">Lihat Detail</button>
           </div>
         </div>
       </div>
 
       <!-- Produk 3 -->
-      <div class="product-card bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 flex flex-col">
-        <div class="relative group aspect-[4/3] bg-gray-200 flex items-center justify-center">
-          <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d1f717c1-0e9b-428d-bb0d-2e703f85f6e7.png"
-               alt="Banana Chips"
-               class="object-cover w-full h-full group-hover:scale-105 transition-transform duration-300 ease-in-out"
+      <div class="product-card">
+        <div class="relative bg-gray-100 aspect-w-4 aspect-h-3 flex justify-center items-center">
+          <img src="https://images.unsplash.com/photo-1581092919537-0adf2f38fcff?auto=format&fit=crop&w=800&q=80"
+               alt="Map Dokumen"
+               class="object-cover w-full h-full"
                onerror="this.style.display='none'" />
-          <span class="absolute top-2 right-2 bg-pink-500 text-white text-xs font-semibold px-3 py-1 rounded-full shadow">Keripik</span>
+          <span class="badge">Dokumen</span>
         </div>
-        <div class="p-5 flex flex-col flex-grow">
-          <h3 class="text-lg font-bold text-gray-800 mb-1">Banana Chips Rasa <span class="italic text-pink-600">Brown Coklat</span></h3>
-          <p class="text-sm text-gray-600 mb-4 flex-grow">Keripik Pisang dengan taburan coklat manis yang pas jadi teman santai.</p>
-          <div class="flex gap-3 mt-auto">
-            <button class="w-1/2 bg-pink-500 hover:bg-pink-600 text-white text-sm font-semibold py-2 rounded-md flex items-center justify-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-3 6m14-6v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m14-6H6" />
-              </svg>
-              Pinjam
-            </button>
-            <button class="w-1/2 border-2 border-purple-700 text-purple-700 hover:bg-purple-700 hover:text-white text-sm font-semibold py-2 rounded-md transition">
-              Lihat Detail
-            </button>
+        <div class="p-4 flex flex-col gap-2 flex-grow">
+          <h3 class="font-semibold text-gray-800 text-base">Map Arsip Transparan A4</h3>
+          <p class="text-sm text-gray-600 flex-grow">Map untuk menyimpan dokumen penting atau laporan administrasi.</p>
+          <div class="flex gap-2 mt-auto">
+            <button class="w-1/2 pinjam-btn">Pinjam</button>
+            <button class="w-1/2 detail-btn">Lihat Detail</button>
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- Tombol Lihat Semua -->
     <div class="text-center mt-12">
-      <button class="px-8 py-3 rounded-full border-2 border-purple-700 text-purple-800 font-semibold hover:bg-purple-700 hover:text-white transition duration-300">
+      <button class="lihat-semua-btn">
         Lihat Semua
       </button>
     </div>
-  </section>
+  </main>
 
 </body>
 </html>

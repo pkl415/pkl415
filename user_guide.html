@@ -3,208 +3,133 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BI Support User Guide</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>User Guide - BI Support</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
     body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #2b5876, #4e4376);
-      color: #e2e8f0;
-      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f7fa;
+      color: #374151;
     }
 
-    header {
-      background: rgba(30, 41, 59, 0.9);
-      padding: 2rem 1rem;
-      text-align: center;
-      box-shadow: 0 8px 15px rgba(0,0,0,0.3);
-      border-bottom: 2px solid rgba(255,255,255,0.05);
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #f1f5f9;
-    }
-
-    header p {
-      max-width: 720px;
-      margin: 1rem auto 0;
-      font-size: 1.1rem;
-      color: #cbd5e1;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background-color: rgba(255, 255, 255, 0.05);
-      border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
-
-    .section-title {
-      font-size: 1.8rem;
-      text-align: center;
-      font-weight: 700;
-      margin-bottom: 2rem;
-      color: #93c5fd;
-    }
-
-    .steps {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .step {
+    .step-card {
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
       align-items: flex-start;
-      gap: 1.5rem;
+      gap: 20px;
+      transition: 0.3s;
+    }
+
+    .step-card:hover {
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
 
     .step-icon {
-      min-width: 55px;
-      height: 55px;
-      background: linear-gradient(135deg, #0ea5e9, #6366f1);
+      background-color: #6d28d9;
       color: white;
       font-weight: bold;
-      font-size: 1.3rem;
-      border-radius: 999px;
+      font-size: 1rem;
+      border-radius: 9999px;
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-
-    .step-title {
-      font-size: 1rem;
-      font-weight: bold;
-      color: #cbd5e1;
-      margin-bottom: 0.4rem;
-      letter-spacing: 0.05em;
-    }
-
-    .step-desc {
-      color: #e2e8f0;
-      line-height: 1.6;
     }
 
     .about-section {
-      margin-top: 4rem;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 2rem;
-      border-radius: 1rem;
+      background-color: white;
+      border: 1px solid #e5e7eb;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
       display: flex;
-      flex-wrap: wrap;
       align-items: center;
-      gap: 2rem;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+      gap: 20px;
+      margin-top: 40px;
     }
 
-    .about-image {
-      flex: 0 0 140px;
+    .about-section img {
+      width: 100px;
       height: 100px;
-      border-radius: 1rem;
-      overflow: hidden;
-      background: linear-gradient(135deg, #8b5cf6, #ec4899);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .about-image img {
-      width: 100%;
-      height: 100%;
+      border-radius: 12px;
       object-fit: cover;
-      filter: brightness(0.85);
-    }
-
-    .about-text {
-      flex: 1;
-      min-width: 250px;
-      color: #e2e8f0;
-    }
-
-    .about-text h2 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: #facc15;
+      background-color: #f3f4f6;
     }
 
     @media (max-width: 768px) {
-      .step {
+      .step-card {
         flex-direction: column;
-        align-items: center;
         text-align: center;
+        align-items: center;
       }
+
       .about-section {
         flex-direction: column;
         text-align: center;
-      }
-      .about-image {
-        width: 100%;
-        height: 160px;
       }
     }
   </style>
 </head>
 <body>
 
-<header role="banner" aria-label="BI Support User Guide Header">
-  <h1>BI Support</h1>
-  <p>
-    BI Support adalah platform online yang menyediakan layanan pendukung bisnis melalui teknologi terkini. Platform ini membantu mengelola, memantau, dan mengoptimalkan berbagai proses dengan mudah dan efisien.
-  </p>
-</header>
+  <header class="bg-white shadow-sm border-b border-gray-200 py-6 px-6 text-center">
+    <h1 class="text-3xl font-bold text-gray-800">Panduan Pengguna BI Support</h1>
+    <p class="mt-2 text-gray-600 max-w-2xl mx-auto">
+      BI Support adalah platform digital yang membantu mendukung bisnis melalui teknologi modern — mengelola, memantau, dan mengoptimalkan proses secara efisien.
+    </p>
+  </header>
 
-<main class="container" role="main" aria-label="Panduan Penggunaan BI Support">
-  <section aria-labelledby="section-how-it-works">
-    <h2 id="section-how-it-works" class="section-title">BI Support | How it works</h2>
-    <div class="steps">
-      <article class="step" aria-label="Step 1">
-        <div class="step-icon" aria-hidden="true">1</div>
-        <div>
-          <h3 class="step-title">STEP #1</h3>
-          <p class="step-desc">
-            Registrasi dan daftar akun untuk memulai menggunakan platform. Proses pendaftaran mudah dan cepat dengan pengisian formulir sederhana.
-          </p>
+  <main class="max-w-5xl mx-auto px-6 py-10">
+    <section>
+      <h2 class="text-2xl font-semibold text-gray-700 mb-6 text-center">BI Support | Cara Penggunaan</h2>
+      <div class="space-y-6">
+        <!-- STEP 1 -->
+        <div class="step-card">
+          <div class="step-icon">1</div>
+          <div>
+            <h3 class="font-semibold text-gray-800 mb-1">STEP #1</h3>
+            <p class="text-gray-600">Registrasi akun Anda dengan mengisi formulir yang disediakan untuk memulai akses ke platform.</p>
+          </div>
         </div>
-      </article>
-      <article class="step" aria-label="Step 2">
-        <div class="step-icon" aria-hidden="true">2</div>
-        <div>
-          <h3 class="step-title">STEP #2</h3>
-          <p class="step-desc">
-            Pengaturan dan konfigurasi sistem pendukung sesuai kebutuhan bisnis Anda. Pilih modul dan fitur yang akan digunakan.
-          </p>
-        </div>
-      </article>
-      <article class="step" aria-label="Step 3">
-        <div class="step-icon" aria-hidden="true">3</div>
-        <div>
-          <h3 class="step-title">STEP #3</h3>
-          <p class="step-desc">
-            Mulai gunakan BI Support secara aktif untuk memantau, menganalisis, dan mengelola data bisnis Anda secara real-time.
-          </p>
-        </div>
-      </article>
-    </div>
-  </section>
 
-  <section aria-labelledby="section-about" class="about-section" role="region" aria-label="Tentang Boehringer Ingelheim Animal Health">
-    <div class="about-image" role="img" aria-label="Logo Produk">
-      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d3bd6a76-18c9-405e-8735-6d9ec08b5516.png" alt="Logo Boehringer Ingelheim Animal Health" onerror="this.style.display='none'" />
-    </div>
-    <div class="about-text">
-      <h2>Over Boehringer Ingelheim Animal Health</h2>
-      <p>
-        Boehringer Ingelheim Animal Health adalah perusahaan global yang fokus pada kesehatan hewan dengan inovasi dan teknologi canggih untuk mendukung kesejahteraan hewan dan produktivitas peternakan. Dengan pengalaman bertahun-tahun dalam bidang ini, kami berkomitmen menyediakan solusi terbaik untuk kebutuhan Anda.
-      </p>
-    </div>
-  </section>
-</main>
+        <!-- STEP 2 -->
+        <div class="step-card">
+          <div class="step-icon">2</div>
+          <div>
+            <h3 class="font-semibold text-gray-800 mb-1">STEP #2</h3>
+            <p class="text-gray-600">Atur konfigurasi sistem pendukung yang sesuai dengan kebutuhan bisnis Anda secara fleksibel.</p>
+          </div>
+        </div>
+
+        <!-- STEP 3 -->
+        <div class="step-card">
+          <div class="step-icon">3</div>
+          <div>
+            <h3 class="font-semibold text-gray-800 mb-1">STEP #3</h3>
+            <p class="text-gray-600">Gunakan sistem BI Support untuk memantau, menganalisis, dan mengelola data bisnis Anda.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section mt-12">
+      <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d3bd6a76-18c9-405e-8735-6d9ec08b5516.png"
+           alt="Logo Boehringer Ingelheim Animal Health"
+           onerror="this.style.display='none'" />
+      <div>
+        <h3 class="text-lg font-semibold text-purple-700 mb-2">Tentang Boehringer Ingelheim Animal Health</h3>
+        <p class="text-gray-600">
+          Kami adalah perusahaan global di bidang kesehatan hewan, berkomitmen pada inovasi untuk kesejahteraan hewan dan produktivitas peternakan. Dengan pengalaman luas, kami hadir sebagai solusi terbaik untuk kebutuhan Anda.
+        </p>
+      </div>
+    </section>
+  </main>
 
 </body>
 </html>
