@@ -3,185 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kategori Barang</title>
+  <title>Kategori Barang | Inventaris App</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f5f7fa;
+    html {
+      scroll-behavior: smooth;
     }
-
-    .product-card {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .product-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .pinjam-btn {
-      background-color: white;
-      color: #333;
-      border: 1px solid #ccc;
-      padding: 8px;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .pinjam-btn:hover {
-      background-color: #4caf50;
-      color: white;
-      border-color: #4caf50;
-    }
-
-    .detail-btn {
-      background-color: transparent;
-      color: #333;
-      border: 1px solid #ccc;
-      padding: 8px;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    .detail-btn:hover,
-    .detail-btn:focus {
-      background-color: #ef4444;
-      color: white;
-      border-color: #ef4444;
-    }
-
-    .lihat-semua-btn {
-      background-color: transparent;
-      color: #6b7280;
-      border: 2px solid #d1d5db;
-      font-weight: 600;
-      border-radius: 9999px;
-      padding: 0.75rem 2rem;
-      transition: all 0.3s ease;
-    }
-
-    .lihat-semua-btn:hover,
-    .lihat-semua-btn:focus {
-      background-color: #ef4444;
-      color: white;
-      border-color: #ef4444;
-    }
-
     .badge {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background-color: #3b82f6;
-      color: white;
-      padding: 5px 12px;
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 0.75rem;
+      font-weight: 500;
       border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 600;
     }
   </style>
 </head>
-<body>
+<body class="bg-gray-50 text-gray-800 font-sans relative">
+
+  <!-- Navbar -->
+  <nav class="bg-white shadow-md sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="text-xl font-bold flex items-center gap-2" style="color:#42909b">
+        <i data-feather="package"></i> InventarisApp
+      </div>
+      <ul class="hidden md:flex space-x-6 text-sm font-medium">
+        <li><a href="#" class="text-gray-700 hover:text-blue-500 transition">Beranda</a></li>
+        <li><a href="#" class="font-semibold" style="color:#42909b">Kategori</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-500 transition">Manajemen</a></li>
+        <li><a href="#" class="text-gray-700 hover:text-blue-500 transition">Help Center</a></li>
+      </ul>
+      <div class="md:hidden">
+        <button id="menuBtn"><i data-feather="menu"></i></button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div id="mobileMenu" class="md:hidden hidden bg-white shadow-md px-4 py-2 space-y-2">
+    <a href="#" class="block text-gray-700 hover:text-blue-500">Beranda</a>
+    <a href="#" class="block font-semibold" style="color:#42909b">Kategori</a>
+    <a href="#" class="block text-gray-700 hover:text-blue-500">Manajemen</a>
+    <a href="#" class="block text-gray-700 hover:text-blue-500">Help Center</a>
+  </div>
 
   <!-- Header -->
-  <header class="bg-white border-b border-gray-200 py-4 px-6 flex justify-between items-center shadow-sm">
-    <h1 class="text-2xl font-bold text-gray-800">Kategori Barang</h1>
-    <div class="flex items-center gap-3">
-      <div class="relative">
-        <select class="border border-gray-300 rounded-md px-3 py-2 text-sm">
-          <option>Kategori</option>
-          <option>Elektronik</option>
-          <option>Peralatan</option>
-          <option>Dokumen</option>
-        </select>
-      </div>
-      <div class="relative">
-        <input type="text" placeholder="Cari barang..." class="border border-gray-300 rounded-md px-3 py-2 text-sm w-56" />
-        <span class="absolute right-3 top-2.5 text-gray-500">🔍</span>
-      </div>
-    </div>
+  <header class="py-12 text-white text-center shadow-md" style="background-color:#42909b">
+    <h1 class="text-4xl font-bold tracking-wide drop-shadow">Daftar Kategori Barang</h1>
+    <p class="mt-2 text-base opacity-90">Telusuri semua barang berdasarkan kategori</p>
   </header>
 
-  <!-- Konten Produk -->
-  <main class="px-6 py-10 max-w-7xl mx-auto">
-    <h2 class="text-xl font-semibold text-gray-700 mb-6">Barang Tersedia</h2>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+  <!-- Filter/Search -->
+  <section class="max-w-7xl mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+      <input type="text" placeholder="🔍 Cari barang..." class="w-full md:w-1/2 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2" style="--tw-ring-color: #42909b;">
+      <select class="w-full md:w-1/4 px-4 py-3 border border-gray-300 rounded-lg text-gray-600 focus:outline-none focus:ring-2" style="--tw-ring-color: #42909b;">
+        <option value="">Semua Kategori</option>
+        <option value="elektronik">Elektronik</option>
+        <option value="furniture">Furniture</option>
+        <option value="alat">Alat Tulis</option>
+      </select>
+    </div>
+  </section>
 
-      <!-- Produk 1 -->
-      <div class="product-card">
-        <div class="relative bg-gray-100 aspect-w-4 aspect-h-3 flex justify-center items-center">
-          <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80"
-               alt="Laptop Dell"
-               class="object-cover w-full h-full"
-               onerror="this.style.display='none'" />
-          <span class="badge">Elektronik</span>
-        </div>
-        <div class="p-4 flex flex-col gap-2 flex-grow">
-          <h3 class="font-semibold text-gray-800 text-base">Laptop Dell Inspiron 14</h3>
-          <p class="text-sm text-gray-600 flex-grow">Laptop ringan untuk produktivitas kerja dan presentasi mobile.</p>
-          <div class="flex gap-2 mt-auto">
-            <button class="w-1/2 pinjam-btn">Pinjam</button>
-            <button class="w-1/2 detail-btn">Lihat Detail</button>
+  <!-- Grid Barang -->
+  <section class="max-w-7xl mx-auto px-4 pb-24">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+
+      <!-- Card Barang -->
+      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group">
+        <img src="https://images.unsplash.com/photo-1555617980-249e9d50b36b?auto=format&fit=crop&w=800&q=80" alt="Printer" class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300">
+        <div class="p-4 space-y-2">
+          <div class="flex justify-between items-center">
+            <h3 class="text-lg font-semibold">Printer Canon LBP2900</h3>
+            <span class="badge" style="background-color:#e0f2f1; color:#42909b;">Alat Tulis</span>
+          </div>
+          <p class="text-sm text-gray-500">Printer laser cepat untuk kebutuhan dokumen kantor.</p>
+          <div class="mt-3 flex gap-2">
+            <button class="w-1/2 text-white py-2 rounded-md hover:opacity-90" style="background-color:#42909b">Pinjam</button>
+            <button class="w-1/2 border py-2 rounded-md hover:text-white hover:opacity-90" style="color:#42909b; border-color:#42909b;" onmouseover="this.style.backgroundColor='#42909b'; this.style.color='white'" onmouseout="this.style.backgroundColor=''; this.style.color='#42909b'">Detail</button>
           </div>
         </div>
       </div>
 
-      <!-- Produk 2 -->
-      <div class="product-card">
-        <div class="relative bg-gray-100 aspect-w-4 aspect-h-3 flex justify-center items-center">
-          <img src="https://images.unsplash.com/photo-1603791440384-56cd371ee9a7?auto=format&fit=crop&w=800&q=80"
-               alt="Proyektor"
-               class="object-cover w-full h-full"
-               onerror="this.style.display='none'" />
-          <span class="badge">Peralatan</span>
-        </div>
-        <div class="p-4 flex flex-col gap-2 flex-grow">
-          <h3 class="font-semibold text-gray-800 text-base">Proyektor Epson XGA</h3>
-          <p class="text-sm text-gray-600 flex-grow">Cocok untuk rapat atau presentasi di kelas dan kantor.</p>
-          <div class="flex gap-2 mt-auto">
-            <button class="w-1/2 pinjam-btn">Pinjam</button>
-            <button class="w-1/2 detail-btn">Lihat Detail</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Produk 3 -->
-      <div class="product-card">
-        <div class="relative bg-gray-100 aspect-w-4 aspect-h-3 flex justify-center items-center">
-          <img src="https://images.unsplash.com/photo-1581092919537-0adf2f38fcff?auto=format&fit=crop&w=800&q=80"
-               alt="Map Dokumen"
-               class="object-cover w-full h-full"
-               onerror="this.style.display='none'" />
-          <span class="badge">Dokumen</span>
-        </div>
-        <div class="p-4 flex flex-col gap-2 flex-grow">
-          <h3 class="font-semibold text-gray-800 text-base">Map Arsip Transparan A4</h3>
-          <p class="text-sm text-gray-600 flex-grow">Map untuk menyimpan dokumen penting atau laporan administrasi.</p>
-          <div class="flex gap-2 mt-auto">
-            <button class="w-1/2 pinjam-btn">Pinjam</button>
-            <button class="w-1/2 detail-btn">Lihat Detail</button>
-          </div>
-        </div>
-      </div>
+      <!-- Tambah card lain sesuai kebutuhan -->
 
     </div>
 
-    <!-- Tombol Lihat Semua -->
-    <div class="text-center mt-12">
-      <button class="lihat-semua-btn">
-        Lihat Semua
-      </button>
+    <!-- Tombol Lihat Lebih Banyak -->
+    <div class="mt-12 text-center">
+      <button class="text-white px-6 py-2 rounded-full shadow transition" style="background-color:#42909b">⬇️ Lihat Lebih Banyak</button>
     </div>
-  </main>
+  </section>
+
+  <!-- Scroll to Top -->
+  <a href="#" class="fixed bottom-6 right-6 text-white p-3 rounded-full shadow-lg transition duration-300" style="background-color:#42909b">
+    <i data-feather="arrow-up"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t mt-10 py-8 text-center text-sm text-gray-500">
+    <p>© 2025 Web Inventaris — Dibuat dengan ❤️ oleh Tim Developer</p>
+    <div class="mt-2 flex justify-center gap-4 text-gray-400">
+      <a href="#"><i data-feather="facebook"></i></a>
+      <a href="#"><i data-feather="instagram"></i></a>
+      <a href="#"><i data-feather="mail"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    feather.replace();
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+  </script>
 
 </body>
 </html>
