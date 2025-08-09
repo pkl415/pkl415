@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Riwayat Peminjaman</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+    }
+    .navbar {
+      background-color: #42909b;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: left;
+      gap: 30px;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+    .navbar a:hover {
+      background-color: #007180;
+      border-radius: 5px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ccc;
+      font-size: 14px;
+    }
+    th {
+      background-color: #42909b;
+      color: white;
+    }
+    tr:hover {
+      background-color: #f1f1f1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="tambah.html">Tambah Barang</a>
+    <a href="edit.html">Edit Barang</a>
+    <a href="pinjam.html">Pinjam Barang</a>
+    <a href="history.html">Riwayat</a>
+  </div>
+
+  <div class="container">
+    <h2>Riwayat Peminjaman Barang</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>Nama Peminjam</th>
+          <th>Barang</th>
+          <th>Jumlah</th>
+          <th>Tanggal Pinjam</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Andi</td>
+          <td>Proyektor</td>
+          <td>1</td>
+          <td>2025-08-07</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Siti</td>
+          <td>Laptop</td>
+          <td>2</td>
+          <td>2025-08-06</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

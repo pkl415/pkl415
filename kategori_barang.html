@@ -4,119 +4,288 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kategori Barang | Inventaris App</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <script src="https://unpkg.com/feather-icons"></script>
   <style>
-    html {
-      scroll-behavior: smooth;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      color: #333;
+    }
+
+    nav {
+      background-color: #42909b;
+      padding: 15px 30px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      font-size: 20px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .nav-links a,
+    .dropdown-btn {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .dropdown-btn:hover {
+      color: #bebebe;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #ffffff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      border-radius: 8px;
+      display: none;
+      flex-direction: column;
+      min-width: 160px;
+      z-index: 1000;
+    }
+
+    .dropdown a {
+      padding: 10px 16px;
+      text-decoration: none;
+      color: #555;
+      border-bottom: 1px solid #eee;
+    }
+
+    .dropdown a:hover {
+      background-color: #f3f4f6;
+      color: #42909b;
+    }
+
+    .dropdown-container:hover .dropdown {
+      display: flex;
+    }
+
+    header {
+      background-color: #f3f4f6;
+      color: #42909b;
+      padding: 60px 30px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .search-box {
+      margin: 30px auto;
+      max-width: 600px;
+      padding: 0 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 12px 16px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      outline-color: #42909b;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-body h3 {
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
     .badge {
       display: inline-block;
-      padding: 4px 8px;
-      font-size: 0.75rem;
-      font-weight: 500;
-      border-radius: 9999px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      background-color: #e0f2f1;
+      color: #42909b;
+      margin-bottom: 10px;
+    }
+
+    .card-body p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn-primary {
+      background-color: #42909b;
+      color: white;
+    }
+
+    .btn-outline {
+      border: 2px solid #42909b;
+      background-color: white;
+      color: #42909b;
+    }
+
+    .btn-outline:hover {
+      background-color: #42909b;
+      color: white;
+    }
+
+    .see-more {
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .see-more button {
+      background-color: #42909b;
+      color: white;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+
+    .see-more button:hover {
+      opacity: 0.8;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #888;
+      background-color: white;
     }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans relative">
+<body>
 
   <!-- Navbar -->
-  <nav class="bg-white shadow-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="text-xl font-bold flex items-center gap-2" style="color:#42909b">
-        <i data-feather="package"></i> InventarisApp
-      </div>
-      <ul class="hidden md:flex space-x-6 text-sm font-medium">
-        <li><a href="#" class="text-gray-700 hover:text-blue-500 transition">Beranda</a></li>
-        <li><a href="#" class="font-semibold" style="color:#42909b">Kategori</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-blue-500 transition">Manajemen</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-blue-500 transition">Help Center</a></li>
-      </ul>
-      <div class="md:hidden">
-        <button id="menuBtn"><i data-feather="menu"></i></button>
-      </div>
-    </div>
-  </nav>
+  <nav>
+    <div class="nav-brand">InventarisApp</div>
+    <div class="nav-links">
+      <a href="#">Beranda</a>
 
-  <!-- Mobile Menu -->
-  <div id="mobileMenu" class="md:hidden hidden bg-white shadow-md px-4 py-2 space-y-2">
-    <a href="#" class="block text-gray-700 hover:text-blue-500">Beranda</a>
-    <a href="#" class="block font-semibold" style="color:#42909b">Kategori</a>
-    <a href="#" class="block text-gray-700 hover:text-blue-500">Manajemen</a>
-    <a href="#" class="block text-gray-700 hover:text-blue-500">Help Center</a>
-  </div>
-
-  <!-- Header -->
-  <header class="py-12 text-white text-center shadow-md" style="background-color:#42909b">
-    <h1 class="text-4xl font-bold tracking-wide drop-shadow">Daftar Kategori Barang</h1>
-    <p class="mt-2 text-base opacity-90">Telusuri semua barang berdasarkan kategori</p>
-  </header>
-
-  <!-- Filter/Search -->
-  <section class="max-w-7xl mx-auto px-4 py-8">
-    <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-      <input type="text" placeholder="🔍 Cari barang..." class="w-full md:w-1/2 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2" style="--tw-ring-color: #42909b;">
-      <select class="w-full md:w-1/4 px-4 py-3 border border-gray-300 rounded-lg text-gray-600 focus:outline-none focus:ring-2" style="--tw-ring-color: #42909b;">
-        <option value="">Semua Kategori</option>
-        <option value="elektronik">Elektronik</option>
-        <option value="furniture">Furniture</option>
-        <option value="alat">Alat Tulis</option>
-      </select>
-    </div>
-  </section>
-
-  <!-- Grid Barang -->
-  <section class="max-w-7xl mx-auto px-4 pb-24">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-
-      <!-- Card Barang -->
-      <div class="bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 overflow-hidden group">
-        <img src="https://images.unsplash.com/photo-1555617980-249e9d50b36b?auto=format&fit=crop&w=800&q=80" alt="Printer" class="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300">
-        <div class="p-4 space-y-2">
-          <div class="flex justify-between items-center">
-            <h3 class="text-lg font-semibold">Printer Canon LBP2900</h3>
-            <span class="badge" style="background-color:#e0f2f1; color:#42909b;">Alat Tulis</span>
-          </div>
-          <p class="text-sm text-gray-500">Printer laser cepat untuk kebutuhan dokumen kantor.</p>
-          <div class="mt-3 flex gap-2">
-            <button class="w-1/2 text-white py-2 rounded-md hover:opacity-90" style="background-color:#42909b">Pinjam</button>
-            <button class="w-1/2 border py-2 rounded-md hover:text-white hover:opacity-90" style="color:#42909b; border-color:#42909b;" onmouseover="this.style.backgroundColor='#42909b'; this.style.color='white'" onmouseout="this.style.backgroundColor=''; this.style.color='#42909b'">Detail</button>
-          </div>
+      <!-- Dropdown Kategori -->
+      <div class="dropdown-container">
+        <div class="dropdown-btn">Kategori ▾</div>
+        <div class="dropdown">
+          <a href="#">Elektronik</a>
+          <a href="#">Alat Tulis</a>
+          <a href="#">Furniture</a>
+          <a href="#">Lainnya</a>
         </div>
       </div>
 
-      <!-- Tambah card lain sesuai kebutuhan -->
-
+      <a href="#">Manajemen</a>
+      <a href="#">Help</a>
     </div>
+  </nav>
 
-    <!-- Tombol Lihat Lebih Banyak -->
-    <div class="mt-12 text-center">
-      <button class="text-white px-6 py-2 rounded-full shadow transition" style="background-color:#42909b">⬇️ Lihat Lebih Banyak</button>
+  <!-- Header -->
+  <header>
+    <h1>Daftar Kategori Barang</h1>
+    <p>Telusuri semua barang berdasarkan kategori</p>
+  </header>
+
+  <!-- Search -->
+  <div class="search-box">
+    <input type="text" placeholder="🔍 Cari barang...">
+  </div>
+
+  <!-- Grid Cards -->
+  <section class="grid">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1555617980-249e9d50b36b?auto=format&fit=crop&w=800&q=80" alt="Printer">
+      <div class="card-body">
+        <span class="badge">Alat Tulis</span>
+        <h3>Printer Canon LBP2900</h3>
+        <p>Printer laser cepat untuk kebutuhan dokumen kantor.</p>
+        <div class="btn-group">
+          <button class="btn btn-primary">Pinjam</button>
+          <button class="btn btn-outline">Detail</button>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Scroll to Top -->
-  <a href="#" class="fixed bottom-6 right-6 text-white p-3 rounded-full shadow-lg transition duration-300" style="background-color:#42909b">
-    <i data-feather="arrow-up"></i>
-  </a>
+  <!-- See More -->
+  <div class="see-more">
+    <button>⬇️ Lihat Lebih Banyak</button>
+  </div>
 
   <!-- Footer -->
-  <footer class="bg-white border-t mt-10 py-8 text-center text-sm text-gray-500">
-    <p>© 2025 Web Inventaris — Dibuat dengan ❤️ oleh Tim Developer</p>
-    <div class="mt-2 flex justify-center gap-4 text-gray-400">
-      <a href="#"><i data-feather="facebook"></i></a>
-      <a href="#"><i data-feather="instagram"></i></a>
-      <a href="#"><i data-feather="mail"></i></a>
-    </div>
+  <footer>
+    © 2025 Web Inventaris — Dibuat dengan ❤️ oleh Tim Developer
   </footer>
-
-  <script>
-    feather.replace();
-    document.getElementById('menuBtn').addEventListener('click', () => {
-      document.getElementById('mobileMenu').classList.toggle('hidden');
-    });
-  </script>
 
 </body>
 </html>

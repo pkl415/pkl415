@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tambah Barang</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+    }
+    .navbar {
+      background-color: #42909b;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: left;
+      gap: 30px;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 5px 10px;
+    }
+    .navbar a:hover {
+      background-color: #007180;
+      border-radius: 5px;
+    }
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+      background-color: #f9f9f9;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    .container h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    ::placeholder {
+      color: #aaa;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="navbar">
+    <a href="tambah.html">Tambah Barang</a>
+    <a href="edit.html">Edit Barang</a>
+    <a href="pinjam.html">Pinjam Barang</a>
+    <a href="history.html">Riwayat</a>
+  </div>
+
+  <div class="container">
+    <h2>Form Tambah Barang</h2>
+    <form>
+      <label for="nama">Nama Barang</label>
+      <input type="text" id="nama" placeholder="Masukkan nama barang">
+
+      <label for="kategori">Kategori</label>
+      <select id="kategori">
+        <option>Pilih kategori</option>
+      </select>
+
+      <label for="jumlah">Jumlah</label>
+      <input type="text" id="jumlah" placeholder="Masukkan jumlah">
+    </form>
+  </div>
+
+</body>
+</html>
