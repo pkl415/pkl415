@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Barang</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f6fa;
+        margin: 0;
+        padding: 0;
+    }
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: white;
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    header h1 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+    }
+    .btn-add {
+        background-color: #e74c3c;
+        color: white;
+        padding: 10px 18px;
+        border-radius: 6px;
+        border: none;
+        font-size: 14px;
+        cursor: pointer;
+    }
+    .toolbar {
+        display: flex;
+        gap: 10px;
+        background: white;
+        padding: 15px 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    .toolbar input {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        flex: 1;
+    }
+    .toolbar select {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+    .list-container {
+        padding: 20px;
+    }
+    .item {
+        display: flex;
+        background: white;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: 0px 1px 3px rgba(0,0,0,0.1);
+        overflow: hidden;
+    }
+    .item img {
+        width: 120px;
+        height: 100%;
+        object-fit: cover;
+    }
+    .item-details {
+        padding: 15px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .item-title {
+        font-weight: bold;
+        color: #333;
+    }
+    .item-meta {
+        font-size: 13px;
+        color: #777;
+        margin-top: 5px;
+    }
+    .item-price {
+        font-size: 14px;
+        color: #2ecc71;
+        margin-top: 8px;
+    }
+    .item-extra {
+        padding: 15px;
+        font-size: 13px;
+        background: #f9f9f9;
+        border-left: 1px solid #eee;
+        min-width: 160px;
+    }
+    .stock-level {
+        font-weight: bold;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Weight & Canopy Accessories</h1>
+    <button class="btn-add">+ Add New</button>
+</header>
+
+<div class="toolbar">
+    <input type="text" placeholder="Search Weight & Canopy...">
+    <label>Sort by:</label>
+    <select>
+        <option>Name</option>
+        <option>Stock</option>
+        <option>Price</option>
+    </select>
+</div>
+
+<div class="list-container">
+    <div class="item">
+        <img src="https://via.placeholder.com/120" alt="Barang">
+        <div class="item-details">
+            <div class="item-title">Sub Floor Espresso Wood</div>
+            <div class="item-meta">56 units • $12858.44</div>
+            <div class="item-price">Available</div>
+        </div>
+        <div class="item-extra">
+            <div class="stock-level">Min level: 4</div>
+            <div>Purchase date: Sep/23/2019</div>
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="https://via.placeholder.com/120" alt="Barang">
+        <div class="item-details">
+            <div class="item-title">SAND BAG DELUXE 35LBS</div>
+            <div class="item-meta">5 units • $190.80</div>
+            <div class="item-price">Low Stock</div>
+        </div>
+        <div class="item-extra">
+            <div class="stock-level">Min level: 2</div>
+            <div>Purchase date: Jan/06/2020</div>
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="https://via.placeholder.com/120" alt="Barang">
+        <div class="item-details">
+            <div class="item-title">CANOPY TENT FAN</div>
+            <div class="item-meta">95 units • $2941.0</div>
+            <div class="item-price">Available</div>
+        </div>
+        <div class="item-extra">
+            <div class="stock-level">Min level: 10</div>
+            <div>Purchase date: Jun/11/2018</div>
+        </div>
+    </div>
+
+    <div class="item">
+        <img src="https://via.placeholder.com/120" alt="Barang">
+        <div class="item-details">
+            <div class="item-title">EXIT SIGNS – Battery & Plastic</div>
+            <div class="item-meta">47 units • $7023.00</div>
+            <div class="item-price">Available</div>
+        </div>
+        <div class="item-extra">
+            <div class="stock-level">Min level: 2</div>
+            <div>Purchase date: Jan/03/2020</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
