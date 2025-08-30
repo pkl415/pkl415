@@ -1,367 +1,204 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="id">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mediatheek | Feedback Management</title>
+  <title>Help </title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      background-color: #f9f9f9;
-      display: flex;
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    .sidebar {
-      width: 70px;
-      background-color: #6d28d9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 30px 0;
-      gap: 20px;
-      box-shadow: 2px 0 10px rgba(0,0,0,0.05);
-    }
-
-    .sidebar-icon {
-      width: 36px;
-      height: 36px;
-      background-color: #ffffff;
-      border-radius: 50%;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .sidebar-icon:hover {
-      transform: scale(1.1);
-    }
-
-    .main {
-      flex: 1;
-      padding: 40px 50px;
-      background-color: #ffffff;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .header-left h1 {
-      font-size: 24px;
-      color: #4b0082;
-      margin-bottom: 10px;
-    }
-
-    .header-left p {
-      font-size: 14px;
-      color: #555;
-      max-width: 600px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      color: #333;
       line-height: 1.6;
     }
 
-    .header-right {
-      text-align: right;
+    /* Navbar */
+    .navbar {
+      background-color: #42909b;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 30px;
+    }
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+    .navbar a:hover {
+      background-color: #007180;
     }
 
-    .header-right button {
-      padding: 6px 14px;
-      background-color: #e0e0e0;
-      border: none;
-      border-radius: 6px;
-      font-weight: bold;
-      cursor: pointer;
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: #f0fdfd;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      color: #007180;
+      margin-bottom: 15px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 25px;
+    }
+    .search-box input {
+      width: 100%;
+      max-width: 500px;
+      padding: 12px 15px;
+      border: 1px solid #ccc;
+      border-radius: 25px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    /* Section */
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    /* Cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h3 {
+      color: #007180;
       margin-bottom: 10px;
     }
-
-    .meta-data {
-      font-size: 13px;
+    .card p {
+      font-size: 14px;
       color: #555;
     }
 
-    .meta-data p {
-      margin: 2px 0;
-    }
-
-    .top-content {
-      display: flex;
-      margin-top: 30px;
-      flex-wrap: wrap;
-      gap: 30px;
-    }
-
-    .top-left img {
-      width: 160px;
-      height: 160px;
-      background-color: #ddd;
-      object-fit: cover;
-      border-radius: 12px;
-    }
-
-    .table-container {
-      flex: 1;
-      min-width: 280px;
-      overflow-x: auto;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-
-    table th, table td {
-      border: 1px solid #ddd;
-      padding: 10px 12px;
-      font-size: 14px;
-    }
-
-    table th {
-      background-color: #f3f3f3;
-      color: #333;
-    }
-
-    .section-title {
+    /* FAQ */
+    .faq {
       margin-top: 50px;
-      margin-bottom: 15px;
-      font-size: 18px;
-      font-weight: bold;
-      color: #4b0082;
     }
-
-    .previews {
-      display: flex;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-
-    .preview-item {
-      width: 160px;
-      background-color: #f9f9f9;
-      padding: 12px;
+    .faq h2 {
       text-align: center;
-      font-size: 14px;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+      margin-bottom: 25px;
+      color: #007180;
     }
-
-    .preview-item img {
-      width: 100%;
-      height: 90px;
-      object-fit: cover;
+    details {
+      background: #fff;
       border-radius: 8px;
-      background-color: #ccc;
+      padding: 15px 20px;
       margin-bottom: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      cursor: pointer;
     }
-
-    .preview-item a {
-      display: block;
-      margin-top: 6px;
-      font-size: 12px;
-      color: #6d28d9;
-      text-decoration: none;
-    }
-
-    .form-section {
-      background-color: #f3f3f3;
-      margin-top: 50px;
-      padding: 30px;
-      border-radius: 10px;
-    }
-
-    .form-section h2 {
-      font-size: 20px;
-      margin-bottom: 10px;
+    summary {
+      font-weight: bold;
       color: #333;
+      outline: none;
+    }
+    details[open] summary {
+      color: #007180;
     }
 
-    .form-section p {
-      font-size: 14px;
-      margin-bottom: 20px;
-      color: #666;
+    /* Contact */
+    .contact {
+      text-align: center;
+      margin: 60px 0 20px;
     }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
+    .contact h2 {
+      color: #007180;
       margin-bottom: 15px;
     }
-
-    .form-group input,
-    .form-group textarea {
-      padding: 10px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-      border-radius: 6px;
+    .contact p {
+      margin-bottom: 10px;
+      color: #444;
     }
-
-    .form-group textarea {
-      resize: vertical;
-      height: 90px;
-    }
-
-    .submit-button {
-      padding: 12px 20px;
-      background-color: #6d28d9;
+    .contact a {
+      display: inline-block;
+      background-color: #42909b;
       color: white;
-      font-weight: bold;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background 0.3s;
     }
-
-    .submit-button:hover {
-      background-color: #5a21b7;
-    }
-
-    @media (max-width: 768px) {
-      .main {
-        padding: 30px 20px;
-      }
-
-      .top-content {
-        flex-direction: column;
-      }
-
-      .table-container {
-        margin-left: 0;
-      }
-
-      .sidebar {
-        width: 50px;
-        padding: 20px 0;
-      }
+    .contact a:hover {
+      background-color: #007180;
     }
   </style>
 </head>
 <body>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <div class="sidebar-icon"></div>
-    <div class="sidebar-icon"></div>
-    <div class="sidebar-icon"></div>
-    <div class="sidebar-icon"></div>
-    <div class="sidebar-icon"></div>
+  <!-- Hero -->
+  <div class="hero">
+    <h1>Pusat Bantuan</h1>
+    <p>Temukan jawaban, panduan, dan solusi terkait sistem inventaris barang Anda.</p>
+    <div class="search-box">
+      <input type="text" placeholder="Cari bantuan...">
+    </div>
   </div>
 
-  <!-- Main Content -->
-  <div class="main">
-
-    <!-- Header -->
-    <div class="header">
-      <div class="header-left">
-        <h1>Mediatheek | <strong>Feedback Management</strong></h1>
-        <p>
-          Sometimes this is the irony of promoting your businesses products and services,
-          because for a fact that you want to make your business recognizable and earn more
-          sales. Of course you need to come up with attractive prints that will make you stand out.
-        </p>
+  <!-- Cards -->
+  <div class="container">
+    <div class="cards">
+      <div class="card">
+        <h3>📦 Manajemen Barang</h3>
+        <p>Panduan menambah, mengedit, dan menghapus data barang di sistem inventaris.</p>
       </div>
-      <div class="header-right">
-        <button>TERUG</button>
-        <div class="meta-data">
-          <p><strong>Categorie:</strong> Hond/kat</p>
-          <p><strong>Vakgebied:</strong> Dierenarts</p>
-          <p><strong>Type:</strong> PDF, PPT, IMG</p>
-          <p><strong>Taal:</strong> Nederlands</p>
-        </div>
+      <div class="card">
+        <h3>📑 Peminjaman</h3>
+        <p>Cara meminjam barang, mengembalikan, dan melihat riwayat peminjaman.</p>
+      </div>
+      <div class="card">
+        <h3>⚠️ Barang Rusak/Habis</h3>
+        <p>Langkah-langkah melaporkan barang rusak, habis, atau sedang diperbaiki.</p>
+      </div>
+      <div class="card">
+        <h3>❓ FAQ</h3>
+        <p>Pertanyaan umum seputar penggunaan aplikasi inventaris barang.</p>
       </div>
     </div>
 
-    <!-- Top Content -->
-    <div class="top-content">
-      <div class="top-left">
-        <img src="#" alt="Placeholder">
-      </div>
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Tag</th>
-              <th>Language</th>
-              <th>Size</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Online PowerPoint</td>
-              <td>PowerPoint</td>
-              <td>English</td>
-              <td>27 MB</td>
-              <td><a href="#">Download</a></td>
-            </tr>
-            <tr>
-              <td>Bijsluiter</td>
-              <td>PowerPoint</td>
-              <td>English</td>
-              <td>14 MB</td>
-              <td><a href="#">Download</a></td>
-            </tr>
-            <tr>
-              <td>Vertrende poster</td>
-              <td>Image</td>
-              <td>NL</td>
-              <td>3 MB</td>
-              <td><a href="#">Download</a></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <!-- FAQ -->
+    <div class="faq">
+      <h2>Pertanyaan Umum</h2>
+      <details>
+        <summary>Bagaimana cara menambah barang baru?</summary>
+        <p>Buka menu <strong>Tambah Barang</strong>, isi form sesuai data barang, lalu klik tombol "Tambah".</p>
+      </details>
+      <details>
+        <summary>Bagaimana cara meminjam barang?</summary>
+        <p>Buka menu <strong>Pinjam Barang</strong>, pilih barang yang ingin dipinjam, lalu scan QR Code atau klik "Pinjam".</p>
+      </details>
+      <details>
+        <summary>Apa yang harus dilakukan jika barang rusak?</summary>
+        <p>Laporan bisa dibuat di menu <strong>Arsip Barang</strong> pada kategori "Barang Rusak".</p>
+      </details>
     </div>
 
-    <!-- Preview Section -->
-    <div class="section-title">Previews</div>
-    <div class="previews">
-      <div class="preview-item">
-        <img src="#" alt="Preview">
-        <div>Online PowerPoint</div>
-        <a href="#">Download</a>
-      </div>
-      <div class="preview-item">
-        <img src="#" alt="Preview">
-        <div>Bijsluiter</div>
-        <a href="#">Download</a>
-      </div>
-      <div class="preview-item">
-        <img src="#" alt="Preview">
-        <div>Vertrende poster</div>
-        <a href="#">Download</a>
-      </div>
+    <!-- Contact -->
+    <div class="contact">
+      <h2>Butuh Bantuan Lebih Lanjut?</h2>
+      <p>Hubungi admin inventaris untuk mendapatkan bantuan langsung.</p>
+      <a href="mailto:support@inventaris.com">✉️ Hubungi Support</a>
     </div>
-
-    <!-- Form Section -->
-    <div class="form-section">
-      <h2>Stel uw vraag</h2>
-      <p>Heeft u vragen over dit materiaal? Laat een bericht achter via het formulier hieronder.</p>
-      <form>
-        <div class="form-group">
-          <input type="email" placeholder="E-mailadres" required />
-        </div>
-        <div class="form-group">
-          <input type="text" placeholder="Onderwerp" required />
-        </div>
-        <div class="form-group">
-          <textarea placeholder="Bericht..." required></textarea>
-        </div>
-        <button class="submit-button" type="submit">VERSTUUR</button>
-      </form>
-    </div>
-
   </div>
 
 </body>

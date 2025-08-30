@@ -44,7 +44,7 @@
       margin-bottom: 5px;
       font-weight: bold;
     }
-    input[type="text"], select, input[type="date"] {
+    input[type="text"], input[type="date"], select {
       width: 100%;
       padding: 10px;
       margin-bottom: 20px;
@@ -52,9 +52,23 @@
       border-radius: 4px;
       font-size: 14px;
     }
-    ::placeholder {
-      color: #aaa;
+    ::placeholder { color: #aaa; }
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
     }
+    .btn-submit {
+      padding: 8px 18px;
+      background-color: #42909b;
+      color: white;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover { background-color: #007180; }
   </style>
 </head>
 <body>
@@ -69,20 +83,29 @@
   <div class="container">
     <h2>Form Pinjam Barang</h2>
     <form>
-      <label for="nama_peminjam">Nama Peminjam</label>
-      <input type="text" id="nama_peminjam" placeholder="Masukkan nama peminjam">
+      <label for="nama">Nama Peminjam</label>
+      <input type="text" id="nama" placeholder="Masukkan nama peminjam">
 
-      <label for="barang">Nama Barang</label>
-      <input type="text" id="barang" placeholder="Masukkan nama barang yang dipinjam">
-
-      <label for="jumlah">Jumlah</label>
-      <input type="text" id="jumlah" placeholder="Masukkan jumlah yang dipinjam">
+      <label for="barang">Barang</label>
+      <select id="barang">
+        <option>Pilih barang</option>
+        <option>Laptop</option>
+        <option>Proyektor</option>
+        <option>Kamera</option>
+      </select>
 
       <label for="tanggal_pinjam">Tanggal Pinjam</label>
       <input type="date" id="tanggal_pinjam">
 
       <label for="tanggal_kembali">Tanggal Kembali</label>
       <input type="date" id="tanggal_kembali">
+
+      <label for="jumlah">Jumlah</label>
+      <input type="text" id="jumlah" placeholder="Jumlah barang">
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Pinjam</button>
+      </div>
     </form>
   </div>
 

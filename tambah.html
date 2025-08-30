@@ -55,6 +55,25 @@
     ::placeholder {
       color: #aaa;
     }
+    /* tombol tambah kecil di kanan */
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+    }
+    .btn-submit {
+      padding: 10px 20px;
+      background-color: #42909b;
+      color: white;
+      font-size: 14px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover {
+      background-color: #007180;
+    }
   </style>
 </head>
 <body>
@@ -79,6 +98,10 @@
 
       <label for="jumlah">Jumlah</label>
       <input type="text" id="jumlah" placeholder="Masukkan jumlah">
+
+      <div class="form-actions">
+        <button type="submit" class="btn-submit">Tambah</button>
+      </div>
     </form>
   </div>
 
