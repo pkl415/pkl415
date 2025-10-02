@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Help </title>
+  <title>Pusat Bantuan</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to bottom, #e0f7fa, #ffffff);
+      background: linear-gradient(135deg, #e6f4f6, #ffffff);
       color: #333;
       line-height: 1.6;
     }
@@ -20,49 +20,53 @@
       display: flex;
       justify-content: flex-start;
       gap: 30px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     }
     .navbar a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       padding: 8px 15px;
-      border-radius: 5px;
-      transition: background 0.3s;
+      border-radius: 8px;
+      transition: all 0.3s ease;
     }
     .navbar a:hover {
-      background-color: #007180;
+      background-color: #2f6b74;
     }
 
     /* Hero */
     .hero {
       text-align: center;
-      padding: 50px 20px;
-      background: #f0fdfd;
+      padding: 70px 20px;
+      background: linear-gradient(to bottom right, #42909b, #5fbac6);
+      color: white;
+      border-bottom-left-radius: 50px;
+      border-bottom-right-radius: 50px;
     }
     .hero h1 {
-      font-size: 2.5rem;
-      color: #007180;
+      font-size: 2.8rem;
       margin-bottom: 15px;
+      font-weight: bold;
     }
     .hero p {
-      font-size: 1.1rem;
-      color: #555;
+      font-size: 1.2rem;
       margin-bottom: 25px;
     }
     .search-box input {
       width: 100%;
       max-width: 500px;
       padding: 12px 15px;
-      border: 1px solid #ccc;
-      border-radius: 25px;
+      border: none;
+      border-radius: 30px;
       font-size: 14px;
       outline: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    /* Section */
+    /* Container */
     .container {
-      max-width: 1000px;
-      margin: 40px auto;
+      max-width: 1100px;
+      margin: 50px auto;
       padding: 0 20px;
     }
 
@@ -70,21 +74,25 @@
     .cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
+      gap: 25px;
     }
     .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transition: transform 0.3s;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      text-align: center;
     }
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+      background: linear-gradient(145deg, #ffffff, #f0fafa);
     }
     .card h3 {
-      color: #007180;
-      margin-bottom: 10px;
+      color: #42909b;
+      margin-bottom: 12px;
+      font-size: 1.2rem;
     }
     .card p {
       font-size: 14px;
@@ -93,20 +101,26 @@
 
     /* FAQ */
     .faq {
-      margin-top: 50px;
+      margin-top: 60px;
     }
     .faq h2 {
       text-align: center;
-      margin-bottom: 25px;
-      color: #007180;
+      margin-bottom: 30px;
+      color: #42909b;
+      font-size: 1.8rem;
     }
     details {
       background: #fff;
+      border-left: 5px solid #42909b;
       border-radius: 8px;
       padding: 15px 20px;
-      margin-bottom: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    details:hover {
+      background: #f3fbfc;
     }
     summary {
       font-weight: bold;
@@ -114,33 +128,37 @@
       outline: none;
     }
     details[open] summary {
-      color: #007180;
+      color: #42909b;
     }
 
     /* Contact */
     .contact {
       text-align: center;
-      margin: 60px 0 20px;
+      margin: 70px 0 30px;
     }
     .contact h2 {
-      color: #007180;
+      color: #42909b;
       margin-bottom: 15px;
+      font-size: 1.8rem;
     }
     .contact p {
-      margin-bottom: 10px;
+      margin-bottom: 15px;
       color: #444;
     }
     .contact a {
       display: inline-block;
       background-color: #42909b;
       color: white;
-      padding: 10px 20px;
-      border-radius: 25px;
+      padding: 12px 28px;
+      border-radius: 30px;
       text-decoration: none;
-      transition: background 0.3s;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .contact a:hover {
-      background-color: #007180;
+      background-color: #2f6b74;
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -151,7 +169,7 @@
     <h1>Pusat Bantuan</h1>
     <p>Temukan jawaban, panduan, dan solusi terkait sistem inventaris barang Anda.</p>
     <div class="search-box">
-      <input type="text" placeholder="Cari bantuan...">
+      <input type="text" placeholder="🔍 Cari bantuan...">
     </div>
   </div>
 

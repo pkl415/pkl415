@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manajemen Lokasi</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background: #f9fafb; }
+    h1,h2,h3,h4 { font-family: 'Poppins', sans-serif; }
+    .navbar-custom { background-color: #42909b; } /* warna navbar custom */
+  </style>
+</head>
+<body class="text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="navbar-custom p-4 shadow-md">
+    <div class="max-w-6xl mx-auto flex items-center justify-between text-white">
+      <h1 class="font-bold text-lg">Inventaris Barang</h1>
+    </div>
+  </nav>
+
+  <!-- Container -->
+  <div class="max-w-6xl mx-auto p-6">
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6">
+      <h2 class="text-2xl md:text-3xl font-bold text-[#42909b]">Manajemen Lokasi</h2>
+      <a href="tambah_lokasi.html" class="mt-4 sm:mt-0 bg-[#42909b] text-white px-5 py-2 rounded-lg font-medium shadow hover:opacity-90 transition">
+        + Tambah Lokasi
+      </a>
+    </div>
+
+    <!-- Table -->
+    <div class="overflow-x-auto bg-white rounded-xl shadow">
+      <table class="w-full border-collapse">
+        <thead class="bg-[#42909b] text-white">
+          <tr>
+            <th class="py-3 px-4 text-left">No</th>
+            <th class="py-3 px-4 text-left">Nama Lokasi</th>
+            <th class="py-3 px-4 text-left">Deskripsi</th>
+            <th class="py-3 px-4 text-center">Aksi</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y">
+          <tr class="hover:bg-gray-50">
+            <td class="py-3 px-4">1</td>
+            <td class="py-3 px-4">Ruang IT</td>
+            <td class="py-3 px-4">Lokasi penyimpanan perangkat IT</td>
+            <td class="py-3 px-4 text-center">
+              <a href="edit_lokasi.html" class="bg-yellow-400 text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-yellow-500">Edit</a>
+              <button class="bg-red-500 text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-red-600">Hapus</button>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="py-3 px-4">2</td>
+            <td class="py-3 px-4">Gudang Utama</td>
+            <td class="py-3 px-4">Tempat penyimpanan barang besar</td>
+            <td class="py-3 px-4 text-center">
+              <a href="edit_lokasi.html" class="bg-yellow-400 text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-yellow-500">Edit</a>
+              <button class="bg-red-500 text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-red-600">Hapus</button>
+            </td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="py-3 px-4">3</td>
+            <td class="py-3 px-4">Ruang Laboratorium</td>
+            <td class="py-3 px-4">Lokasi alat dan bahan percobaan</td>
+            <td class="py-3 px-4 text-center">
+              <a href="edit_lokasi.html" class="bg-yellow-400 text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-yellow-500">Edit</a>
+              <button class="bg-red-500 text-white px-3 py-1 rounded-md text-sm font-medium hover:bg-red-600">Hapus</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

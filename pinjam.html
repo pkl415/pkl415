@@ -7,9 +7,12 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0f9ff, #ffffff);
+      color: #333;
     }
+
+    /* Navbar (disamakan dengan history.html) */
     .navbar {
       background-color: #42909b;
       padding: 15px 20px;
@@ -27,45 +30,67 @@
       background-color: #007180;
       border-radius: 5px;
     }
+
+    /* Container */
     .container {
-      max-width: 500px;
-      margin: 50px auto;
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 20px;
     }
     .container h2 {
       margin-bottom: 20px;
-      color: #333;
+      font-size: 24px;
+      color: #2c3e50;
+    }
+
+    /* Card Form */
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 25px 30px;
+    }
+    .form-group {
+      margin-bottom: 18px;
     }
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       font-weight: bold;
+      font-size: 14px;
+      color: #444;
     }
     input[type="text"], input[type="date"], select {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
+      padding: 10px 12px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 14px;
+      transition: border-color 0.2s;
+    }
+    input:focus, select:focus {
+      border-color: #42909b;
+      outline: none;
     }
     ::placeholder { color: #aaa; }
+
+    /* Button */
     .form-actions {
       display: flex;
       justify-content: flex-end;
     }
     .btn-submit {
-      padding: 8px 18px;
+      padding: 10px 20px;
       background-color: #42909b;
       color: white;
       font-size: 14px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       transition: background 0.3s;
     }
     .btn-submit:hover { background-color: #007180; }
@@ -73,6 +98,7 @@
 </head>
 <body>
 
+  <!-- Navbar -->
   <div class="navbar">
     <a href="tambah.html">Tambah Barang</a>
     <a href="edit.html">Edit Barang</a>
@@ -80,33 +106,47 @@
     <a href="history.html">Riwayat</a>
   </div>
 
+  <!-- Container -->
   <div class="container">
-    <h2>Form Pinjam Barang</h2>
-    <form>
-      <label for="nama">Nama Peminjam</label>
-      <input type="text" id="nama" placeholder="Masukkan nama peminjam">
+    <h2>📥 Form Pinjam Barang</h2>
 
-      <label for="barang">Barang</label>
-      <select id="barang">
-        <option>Pilih barang</option>
-        <option>Laptop</option>
-        <option>Proyektor</option>
-        <option>Kamera</option>
-      </select>
+    <div class="card">
+      <form>
+        <div class="form-group">
+          <label for="nama">👤 Nama Peminjam</label>
+          <input type="text" id="nama" placeholder="Masukkan nama peminjam">
+        </div>
 
-      <label for="tanggal_pinjam">Tanggal Pinjam</label>
-      <input type="date" id="tanggal_pinjam">
+        <div class="form-group">
+          <label for="barang">📦 Barang</label>
+          <select id="barang">
+            <option>Pilih barang</option>
+            <option>Laptop</option>
+            <option>Proyektor</option>
+            <option>Kamera</option>
+          </select>
+        </div>
 
-      <label for="tanggal_kembali">Tanggal Kembali</label>
-      <input type="date" id="tanggal_kembali">
+        <div class="form-group">
+          <label for="tanggal_pinjam">📅 Tanggal Pinjam</label>
+          <input type="date" id="tanggal_pinjam">
+        </div>
 
-      <label for="jumlah">Jumlah</label>
-      <input type="text" id="jumlah" placeholder="Jumlah barang">
+        <div class="form-group">
+          <label for="tanggal_kembali">📅 Tanggal Kembali</label>
+          <input type="date" id="tanggal_kembali">
+        </div>
 
-      <div class="form-actions">
-        <button type="submit" class="btn-submit">Pinjam</button>
-      </div>
-    </form>
+        <div class="form-group">
+          <label for="jumlah">🔢 Jumlah</label>
+          <input type="text" id="jumlah" placeholder="Jumlah barang">
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-submit">📥 Pinjam</button>
+        </div>
+      </form>
+    </div>
   </div>
 
 </body>

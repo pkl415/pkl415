@@ -7,9 +7,12 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0f9ff, #ffffff);
+      color: #333;
     }
+
+    /* Navbar */
     .navbar {
       background-color: #42909b;
       padding: 15px 20px;
@@ -27,38 +30,57 @@
       background-color: #007180;
       border-radius: 5px;
     }
+
+    /* Container */
     .container {
-      max-width: 500px;
+      max-width: 600px;
       margin: 50px auto;
-      background-color: #f9f9f9;
+      background: white;
       padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      animation: fadeIn 0.6s ease-in-out;
     }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .container h2 {
       margin-bottom: 20px;
-      color: #333;
+      font-size: 24px;
+      color: #2c3e50;
+      text-align: center;
     }
+
+    /* Form */
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 6px;
       font-weight: bold;
+      font-size: 14px;
+      color: #444;
     }
     input[type="text"], select {
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
+      padding: 12px;
+      margin-bottom: 18px;
       border: 1px solid #ccc;
-      border-radius: 4px;
+      border-radius: 6px;
       font-size: 14px;
+      transition: border 0.3s;
     }
-    ::placeholder {
-      color: #aaa;
+    input:focus, select:focus {
+      border-color: #42909b;
+      outline: none;
     }
-    /* tombol tambah kecil di kanan */
+    ::placeholder { color: #aaa; }
+
+    /* Tombol */
     .form-actions {
       display: flex;
       justify-content: flex-end;
+      gap: 10px;
     }
     .btn-submit {
       padding: 10px 20px;
@@ -66,18 +88,32 @@
       color: white;
       font-size: 14px;
       border: none;
-      border-radius: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-submit:hover { 
+      background-color: #007180;
+      transform: scale(1.05);
+    }
+    .btn-cancel {
+      padding: 10px 20px;
+      background-color: #ccc;
+      color: #333;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
       font-weight: bold;
       transition: background 0.3s;
     }
-    .btn-submit:hover {
-      background-color: #007180;
-    }
+    .btn-cancel:hover { background-color: #999; }
   </style>
 </head>
 <body>
 
+  <!-- Navbar -->
   <div class="navbar">
     <a href="tambah.html">Tambah Barang</a>
     <a href="edit.html">Edit Barang</a>
@@ -85,21 +121,27 @@
     <a href="history.html">Riwayat</a>
   </div>
 
+  <!-- Form Tambah -->
   <div class="container">
-    <h2>Form Tambah Barang</h2>
+    <h2>➕ Form Tambah Barang</h2>
     <form>
       <label for="nama">Nama Barang</label>
       <input type="text" id="nama" placeholder="Masukkan nama barang">
 
       <label for="kategori">Kategori</label>
       <select id="kategori">
-        <option>Pilih kategori</option>
+        <option value="">Pilih kategori</option>
+        <option value="Elektronik">Elektronik</option>
+        <option value="Furniture">Furniture</option>
+        <option value="ATK">ATK</option>
+        <option value="Lainnya">Lainnya</option>
       </select>
 
       <label for="jumlah">Jumlah</label>
       <input type="text" id="jumlah" placeholder="Masukkan jumlah">
 
       <div class="form-actions">
+        <button type="button" class="btn-cancel">Batal</button>
         <button type="submit" class="btn-submit">Tambah</button>
       </div>
     </form>

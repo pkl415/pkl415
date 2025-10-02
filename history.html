@@ -3,13 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Riwayat Peminjaman</title>
+  <title>Riwayat Aktivitas Inventaris</title>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #e0e0e0, #ffffff);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to right, #f0f9ff, #ffffff);
+      color: #333;
     }
+
+    /* Navbar */
     .navbar {
       background-color: #42909b;
       padding: 15px 20px;
@@ -27,39 +30,104 @@
       background-color: #007180;
       border-radius: 5px;
     }
+
+    /* Container */
     .container {
-      max-width: 800px;
-      margin: 50px auto;
-      background-color: #f9f9f9;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 20px;
     }
     .container h2 {
       margin-bottom: 20px;
-      color: #333;
+      font-size: 24px;
+      color: #2c3e50;
+    }
+
+    /* Toolbar */
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .search-input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      flex: 1;
+    }
+    .filter {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    /* Card */
+    .card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      overflow: hidden;
     }
     table {
       width: 100%;
       border-collapse: collapse;
     }
     th, td {
-      padding: 12px 15px;
+      padding: 14px 16px;
       text-align: left;
-      border-bottom: 1px solid #ccc;
       font-size: 14px;
     }
     th {
       background-color: #42909b;
       color: white;
+      font-weight: bold;
     }
-    tr:hover {
-      background-color: #f1f1f1;
+    tr:nth-child(even) { background-color: #f9f9f9; }
+    tr:hover { background-color: #eef8ff; }
+
+    /* Badge aktivitas */
+    .badge {
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .pinjam { background: #e3f2fd; color: #1565c0; }
+    .kembali { background: #e8f5e9; color: #2e7d32; }
+    .tambah { background: #fff3e0; color: #ef6c00; }
+    .edit { background: #f3e5f5; color: #6a1b9a; }
+    .hapus { background: #ffebee; color: #c62828; }
+    .pindah { background: #e0f7fa; color: #00838f; }
+
+    /* Pagination */
+    .pagination {
+      margin-top: 20px;
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+    .pagination button {
+      padding: 8px 12px;
+      border: none;
+      border-radius: 5px;
+      background: #42909b;
+      color: white;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .pagination button:hover {
+      background: #007180;
     }
   </style>
 </head>
 <body>
 
+  <!-- Navbar -->
   <div class="navbar">
     <a href="tambah.html">Tambah Barang</a>
     <a href="edit.html">Edit Barang</a>
@@ -67,35 +135,95 @@
     <a href="history.html">Riwayat</a>
   </div>
 
+  <!-- Container -->
   <div class="container">
-    <h2>Riwayat Peminjaman Barang</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>Nama Peminjam</th>
-          <th>Barang</th>
-          <th>Jumlah</th>
-          <th>Tanggal Pinjam</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Andi</td>
-          <td>Proyektor</td>
-          <td>1</td>
-          <td>2025-08-07</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Siti</td>
-          <td>Laptop</td>
-          <td>2</td>
-          <td>2025-08-06</td>
-        </tr>
-      </tbody>
-    </table>
+    <h2>📜 Riwayat Aktivitas Inventaris</h2>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <input type="text" class="search-input" placeholder="🔍 Cari aktivitas...">
+      <select class="filter">
+        <option value="">Semua Aktivitas</option>
+        <option value="pinjam">Pinjam</option>
+        <option value="kembali">Kembali</option>
+        <option value="tambah">Tambah</option>
+        <option value="edit">Edit</option>
+        <option value="hapus">Hapus</option>
+        <option value="pindah">Pindah</option>
+      </select>
+    </div>
+
+    <!-- Card with Table -->
+    <div class="card">
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama User</th>
+            <th>Barang</th>
+            <th>Jumlah</th>
+            <th>Aktivitas</th>
+            <th>Tanggal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Andi</td>
+            <td>Proyektor</td>
+            <td>1</td>
+            <td><span class="badge pinjam">📥 Pinjam</span></td>
+            <td>2025-08-07</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Siti</td>
+            <td>Laptop</td>
+            <td>2</td>
+            <td><span class="badge kembali">📤 Kembali</span></td>
+            <td>2025-08-08</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Budi</td>
+            <td>Kursi</td>
+            <td>10</td>
+            <td><span class="badge tambah">➕ Tambah</span></td>
+            <td>2025-08-09</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>Rina</td>
+            <td>Meja</td>
+            <td>2</td>
+            <td><span class="badge edit">✏️ Edit</span></td>
+            <td>2025-08-09</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>Agus</td>
+            <td>Lampu</td>
+            <td>3</td>
+            <td><span class="badge hapus">🗑️ Hapus</span></td>
+            <td>2025-08-10</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>Dewi</td>
+            <td>Lemari</td>
+            <td>1</td>
+            <td><span class="badge pindah">🔄 Pindah</span></td>
+            <td>2025-08-11</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination">
+      <button>← Sebelumnya</button>
+      <button>Berikutnya →</button>
+    </div>
   </div>
 
 </body>
