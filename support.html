@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dukungan Tambah - Hubungi Admin</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    /* HEADER */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 70px;
+      background: #f9fbfd;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    .left-header, .right-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .left-header select, .left-header a {
+      border: none;
+      background: none;
+      font-size: 14px;
+      cursor: pointer;
+      color: #333;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 22px;
+      color: #33475b;
+    }
+
+    .logo span {
+      color: #ff7a59;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #33475b;
+      margin-right: 20px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #ff7a59;
+    }
+
+    .right-header a {
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .btn-signin {
+      color: #ff7a59;
+      border: 1px solid #ff7a59;
+      padding: 8px 14px;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .btn-signin:hover {
+      background-color: #fff3ef;
+    }
+
+    .btn-get {
+      background-color: #ff7a59;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 5px;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .btn-get:hover {
+      background-color: #ff633b;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(90deg, rgba(51,71,91,0.85), rgba(51,71,91,0.6)), 
+                  url('https://cdn.pixabay.com/photo/2018/03/28/08/13/contact-3270989_1280.jpg') no-repeat center center/cover;
+      text-align: center;
+      color: white;
+      padding: 80px 20px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 16px;
+      opacity: 0.9;
+    }
+
+    /* CARD SECTION */
+    .contact-section {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin: -60px auto 80px auto;
+      flex-wrap: wrap;
+      max-width: 1100px;
+    }
+
+    .contact-card {
+      background: white;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      padding: 40px 30px;
+      flex: 1 1 450px;
+      max-width: 480px;
+      text-align: center;
+    }
+
+    .contact-card i {
+      font-size: 38px;
+      color: #33475b;
+      margin-bottom: 20px;
+    }
+
+    .contact-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #33475b;
+    }
+
+    .contact-card p {
+      font-size: 15px;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .contact-card a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .contact-card a.call {
+      color: #0091ae;
+    }
+
+    .contact-card a.call:hover {
+      text-decoration: underline;
+    }
+
+    .btn-support {
+      background-color: #ff7a59;
+      color: white;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-weight: 600;
+      transition: 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-support:hover {
+      background-color: #ff633b;
+    }
+
+    footer {
+      text-align: center;
+      color: #777;
+      font-size: 13px;
+      padding: 25px 0;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+
+  <section class="hero">
+    <h1>Hubungi Admin</h1>
+    <p>Ingin menghubungi Admin? Admin dengan senang hati akan mendengar dari Anda. Berikut cara untuk menghubungi kami...</p>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-card">
+      <i class="fa-solid fa-phone"></i>
+      <h3>Bicara dengan Admin</h3>
+      <p>Mengalami kendala seputar web inventaris, silahkan hubungi nomer whatsapp Admin.</p>
+      <a href="tel:+6281234567890" class="call">+62 812 3456 7890</a><br>
+    </div>
+
+    <div class="contact-card">
+      <i class="fa-solid fa-comments"></i>
+      <h3>Hubungi E-mail Admin</h3>
+      <p>Terkadang Anda membutuhkan sedikit bantuan dari Admin. Jangan khawatir... tim dukungan Admin siap membantu Anda.</p>
+      <a href="mailto:inventaris1407@gmail.com?subject=Permintaan%20Bantuan%20Inventaris&body=Halo%20Admin,%0A%0ASaya%20ingin%20mengajukan%20pertanyaan%20terkait%20..." 
+      class="btn-support">E-mail Admin</a>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Halaman Dukungan Inventaris - Dibuat untuk Halaman Bantuan Pengguna
+  </footer>
+
+</body>
+</html>

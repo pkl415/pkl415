@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    * {margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', sans-serif;}
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #f5f5f9;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background-color: #5b4cfa;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+    }
+
+    .sidebar .logo {
+      font-size: 22px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sidebar ul li {
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .sidebar ul li:hover {
+      background-color: #4a3de3;
+    }
+
+    .sidebar ul li.active {
+      background-color: #4a3de3;
+      border-left: 4px solid #ffffff;
+    }
+
+    /* Konten utama */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar atas */
+    .navbar {
+      background-color: #5b4cfa;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .navbar .right {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .navbar .profile {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background: url('https://cdn-icons-png.flaticon.com/512/219/219983.png') center/cover;
+    }
+
+    /* Konten utama */
+    .content {
+      padding: 30px;
+      background-color: #fff;
+      margin: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      overflow-x: auto;
+    }
+
+    .content h2 {
+      margin-bottom: 15px;
+    }
+
+    .btn-tambah {
+      background-color: #28a745;
+      color: white;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-bottom: 15px;
+    }
+    .btn-tambah:hover { background-color: #218838; }
+
+    /* Tabel */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    table thead {
+      background-color: #f4f4f4;
+    }
+
+    table th, table td {
+      padding: 12px 10px;
+      text-align: left;
+      border: 1px solid #e0e0e0;
+      vertical-align: middle; /* ini bikin semua isi tabel sejajar tengah vertikal */
+    }
+
+    table td.aksi {
+      padding: 12px 10px;
+      text-align: left;
+      border: 1px solid #e0e0e0;
+      vertical-align: middle; /* ini bikin semua isi tabel sejajar tengah vertikal */
+    }
+
+    .aksi {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      height: 100%;
+    }
+
+    .btn-edit, .btn-delete {
+      padding: 13px 10px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      font-size: 13px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .btn-edit {
+      background-color: #28a745;
+    }
+
+    .btn-delete {
+      background-color: #dc3545;
+    }
+
+    .btn-edit:hover {
+      background-color: #218838;
+    }
+
+    .btn-delete:hover {
+      background-color: #b52b38;
+    }
+
+    /* Responsif */
+    @media(max-width:800px){
+      .sidebar{display:none;}
+      .main{width:100%;}
+    }
+  </style>
+</head>
+<body>
+  <!-- Main content -->
+  <div class="main">
+    <div class="navbar">
+      <span><i class="fa-solid fa-bars"></i></span>
+      <div class="right">
+        <i class="fa-solid fa-gear"></i>
+        <div class="profile"></div>
+      </div>
+    </div>
+
+    <div class="content">
+      <h2>Data Tables</h2>
+      <button class="btn-tambah"><i class="fa-solid fa-plus"></i> Tambah Data</button>
+      <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Logo</th>
+            <th>Nama Unit</th>
+            <th>Password</th>
+            <th>Alamat</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <body>
+          <tr>
+            <td>1</td>
+            <td><img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" width="40"></td>
+            <td>Wicaksono Catur</td>
+            <td>Solo, 11 Maret 1998</td>
+            <td>Jl. Kencur No. 19, Sukoharjo</td>
+            <td class="aksi">
+              <button class="btn-edit"><i class="fa-solid fa-pen"></i> Edit</button>
+              <button class="btn-delete"><i class="fa-solid fa-xmark"></i> Delete</button>
+            </td>
+          </tr>
+        </body>
+      </table>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Form Tambah Akun</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .form-container {
+      background: white;
+      padding: 40px 50px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      width: 420px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 26px;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    label {
+      display: block;
+      text-align: left;
+      margin-bottom: 10px;
+      font-size: 18px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      font-size: 17px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      outline: none;
+      transition: border 0.3s;
+    }
+
+    input:focus {
+      border-color: #6c63ff;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      background-color: #4b3e8e;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #3b2f7a;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Tambah Akun</h2>
+    <form action="#">
+      <label for="nama">Nama Unit</label>
+      <input type="text" id="nama" placeholder="Masukkan nama unit" required>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Masukkan kata sandi" required>
+
+      <button type="submit">Tambah</button>
+    </form>
+  </div>
+</body>
+</html>
